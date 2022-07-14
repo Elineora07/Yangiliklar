@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+
+html, body {
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.imagesize {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.imageview {
+    max-width: 700px;
+    max-height: 600px;
+}
+
+.main-content {
+    min-height: calc(100vh - 120px);
+}
+
+.footer {
+    height: 120px;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+
