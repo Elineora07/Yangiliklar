@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3">
+           {{ post.added_at }}
+            {% for post in posts %}
+                <div class="pb-4">
+                    {% include 'widgets/post-info.html' with item=post %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-6">
+            {% if post.image %}
+            <a href="{{ post.image.url }}" download>
+                <img src="{{ post.image.url }}" class="imageview" alt="">
+            </a>
+            {% else %}
+                <img src="{% static 'img/no-photo-jpg' %}" alt="">
+            {% endif %}
+            <h1>{{ post.subject }}</h1>
+            <div>
+                {{ post.content }}
+            </div>
+        </div>
+        <div class="col-lg-3">
+            {% for post in posts %}
+                <div class="pt-4 pb-4">
+                    {% include 'widgets/post-info.html' with item=post %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

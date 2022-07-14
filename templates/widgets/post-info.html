@@ -1,0 +1,44 @@
+{% load static %}
+<div style="height: 512px">
+    <div class="card{%if h100 == True %} h-100{%endif%}">
+        <a href="{% url 'main:view' item.id %}" class="d-block position-relative">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="...">
+            {% else %}
+                <img src="{% static 'img/no-photo.jpg' %}" class="card-img-top" alt="...">
+            {% endif %}
+        </a>
+        <div class="card-body d-flex flex-column">
+            <p class="card-text">
+                <a href="{% url 'main:cat' item.category_id %}">{{ item.category.name }}</a> / {{ item.user.username }}
+            </p>
+            <h5 class="card-title truncate">{{ item.subject }}</h5>
+            <p class="card-text truncate">{{ item.content }}</p>
+            <div class="mt-auto">
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'main:like' 'like' item.id %}" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-hand-thumbs-up"></i>
+                        {{ item.like }}
+                    </a>
+                    <a href="{% url 'main:like' 'dislike' item.id %}" class="btn btn-outline-secondary btn-sm ms-2">
+                        <i class="bi bi-hand-thumbs-down"></i>
+                        {{ item.dislike }}
+                    </a>
+                    <div>
+                        <i class="bi bi-eye ms-2"></i>
+                        {{ item.read }}
+                    </div>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'main:edit' item.id %}" class="ms-auto btn btn-info btn-sm me-2">
+                            <i class="bi-pencil"></i>
+                        </a>
+                        <a href="{% url 'main:delete' item.id %}"
+                            class="btn btn-danger btn-sm">
+                            <i class="bi-trash"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

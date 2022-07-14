@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+{% load static i18n %}
+{% load bootstrap_pagination %}
+
+
+{% block content %}
+    <div class="row">
+    {% for item in objects_list %}
+        {% include 'widgets/post-info.html'  %}
+    {% endfor %}
+    </div>
+    {% if page_obj.next_page_number >= 2 %}
+        {% bootstrap_paginate page_obj %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'widgets/form.html' %}
+{% block form_url %}{% url 'restaurant:index' %}{% endblock %}
+
+
+{% block content2 %}
+   {% for post in posts %}
+   {{ post.davlat }} {{ post.viloyat }} {{ post.restarant_nomi }}
+   <hr>
+{% endfor %} 
+{% endblock %}

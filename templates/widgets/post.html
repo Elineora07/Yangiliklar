@@ -1,0 +1,7 @@
+{% load static %}
+<h3 class="mt-3 text-center">{{ header }}</h3>
+    <div class="row">
+        {% for item in posts %}
+            {% include 'widgets/posts.html' with h100=True %}
+        {% endfor %}
+    </div>
